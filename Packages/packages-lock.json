@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.fluvio.fx": {
+      "version": "https://github.com/mjducharme/fluviofx.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a18e4849e1e0b2b01cb9e0e7ad3d2ddb10540da4"
+    },
     "com.unity.cinemachine": {
       "version": "2.6.11",
       "depth": 0,

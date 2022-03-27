@@ -526,7 +526,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614585}
   dataType: 0
-  capacity: 32
+  capacity: 3200
   stripCapacity: 16
   particlePerStripCount: 16
   m_Space: 0
@@ -1083,7 +1083,7 @@ MonoBehaviour:
   frustumCulling: 0
   castShadows: 0
   useExposureWeight: 0
-  shaderGraph: {fileID: 4333940904281232215, guid: 0f59d272c15bd9443b347b43a11dfb8f, type: 3}
+  shaderGraph: {fileID: 4333940904281232215, guid: a5ab0568139013a47b5ad9fe3be23847, type: 3}
   primitiveType: 1
   useGeometryShader: 0
 --- !u!114 &8926484042661614589

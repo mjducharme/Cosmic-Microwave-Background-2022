@@ -15,11 +15,22 @@ public class SceneLoader : MonoBehaviour
 
     public GameObject menuGameObject;
 
+    public GameObject sceneTransitionImage;
+
     public int currentScene = 0;
 
     public int selectedScene = 1;
 
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
+
+
+    // called first
+    void OnEnable()
+    {
+        Debug.Log("OnEnable called");
+        //SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
 
     public void StartGame()
     {
@@ -52,8 +63,10 @@ public class SceneLoader : MonoBehaviour
             }
             if (sceneNum != 0) {
                 scenesToLoad.Add(SceneManager.LoadSceneAsync(sceneNum, LoadSceneMode.Additive));
+                sceneTransitionImage.SetActive(true);
             } else {
                 menuGameObject.SetActive(true);
+                sceneTransitionImage.SetActive(false);
             }
             scenesToLoad.Remove(SceneManager.UnloadSceneAsync(currentScene));
             if (sceneNum == 3) {

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.VFX;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class FluvioControl : MonoBehaviour {
     
@@ -45,7 +46,7 @@ public class FluvioControl : MonoBehaviour {
 
     private GradientControl gc;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
         _testVfx = GetComponent<VisualEffect>();
         _amplitudeId = Shader.PropertyToID(visAmplitude);
@@ -56,13 +57,14 @@ public class FluvioControl : MonoBehaviour {
         _visPositionId = Shader.PropertyToID(visPosition);
         gc = new GradientControl();
         currentPosition = new Vector3(0,0,0);
+        osc = GameObject.Find("OSC").GetComponent<OSC>();
         osc.SetAddressHandler( amplitudeAddress , Amplitude );
         osc.SetAddressHandler( positionAddress, SpherePosition);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
+
 	}
 
     void SpherePosition (OscMessage message) {

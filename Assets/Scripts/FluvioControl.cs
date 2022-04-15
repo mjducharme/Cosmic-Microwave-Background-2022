@@ -62,6 +62,10 @@ public class FluvioControl : MonoBehaviour {
         osc.SetAddressHandler( positionAddress, SpherePosition);
     }
 	
+    void OnDestroy() {
+        osc.RemoveAddressHandler( amplitudeAddress );
+        osc.RemoveAddressHandler( positionAddress );
+    }
 	// Update is called once per frame
 	void Update () {
 

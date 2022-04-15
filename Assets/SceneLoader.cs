@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Artngame.SKYMASTER;
 using TMPro;
+using UnityEngine.VFX;
 
 public class SceneLoader : MonoBehaviour
 {
+    public OSC osc;
+
     public Camera mainCamera;
 
     public GameObject nebula;
@@ -17,9 +20,13 @@ public class SceneLoader : MonoBehaviour
 
     public GameObject sceneTransitionImage;
 
+    public string changeSceneAddress = "/ChangeScene";
+
     public int currentScene = 0;
 
     public int selectedScene = 1;
+
+    List<int> sceneReadyToUnload = new List<int>();
 
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
 
@@ -53,6 +60,38 @@ public class SceneLoader : MonoBehaviour
         //scenesToLoad.Add(SceneManager.LoadSceneAsync("Level01Part01", LoadSceneMode.Additive));
         //StartCoroutine(LoadingScreen());
     }
+
+/*    IEnumerator LoadYourAsyncScene(int sceneNum)
+    {
+        // The Application loads the Scene in the background as the current Scene runs.
+        // This is particularly good for creating loading screens.
+        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
+        // a sceneBuildIndex of 1 as shown in Build Settings.
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneNum);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }*/
+
+
+    IEnumerator UnloadSceneWhenReady(int id) {
+        while (!sceneReadyToUnload.Contains(id)) {
+            Debug.Log("scene is not ready to unload, scene id " + id);
+            yield return null;
+        }
+        scenesToLoad.Remove(SceneManager.UnloadSceneAsync(id));
+        sceneReadyToUnload.Remove(id);
+    }
+
+    void SceneReadyToUnload (int sceneNum) {
+        Debug.Log("ready to unload scene " + sceneNum);
+        sceneReadyToUnload.Add(sceneNum);
+    }
+
     public void LoadScene(int sceneNum) {
         if (sceneNum != currentScene) {
             Debug.Log("LoadScene Current Scene is: " + currentScene);
@@ -68,7 +107,21 @@ public class SceneLoader : MonoBehaviour
                 menuGameObject.SetActive(true);
                 sceneTransitionImage.SetActive(false);
             }
-            scenesToLoad.Remove(SceneManager.UnloadSceneAsync(currentScene));
+            
+            if (currentScene != 0) {
+                EventsManager.instance.OnPrepareSceneUnload(currentScene);
+                /*if (currentScene == 1 && sceneNum == 2) {
+                    // Going from scene 1 to 2 we want to crossfade
+                    FadeInOut _scene1Fade = GameObject.Find("FluvioFX Fluid").GetComponent<FadeInOut>();
+                    _scene1Fade.FadeChange(0, 0.1f, 4);
+                }*/
+
+                StartCoroutine(UnloadSceneWhenReady(currentScene));
+                //Debug.Log("After scene is ready to be unloaded, scene " + currentScene);
+
+                
+            }
+
             if (sceneNum == 3) {
                 nebula.SetActive(true);
                 pointLight.SetActive(true);
@@ -81,6 +134,7 @@ public class SceneLoader : MonoBehaviour
             currentScene = sceneNum;
         }
     }
+
 
     public void HideMenu()
     {
@@ -100,10 +154,16 @@ public class SceneLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        osc.SetAddressHandler( changeSceneAddress, ChangeSceneOSC);
+        EventsManager.instance.SceneReadyToUnload += SceneReadyToUnload;
         //currentScene = SceneManager.GetActiveScene().buildIndex;
         //Debug.Log("Current scene is: " + currentScene);
     }
 
+    void ChangeSceneOSC(OscMessage message) {
+        Debug.Log ("Received OSC Change Scene command to go to scene " + message.GetInt(0));
+        LoadScene(message.GetInt(0));
+    }
     // Update is called once per frame
     void Update()
     {

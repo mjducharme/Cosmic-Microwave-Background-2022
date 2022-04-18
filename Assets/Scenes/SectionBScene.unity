@@ -342,12 +342,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneStartTransitionMethod: 1
+  sceneStartFadeColor: {r: 0, g: 0, b: 0, a: 1}
   sceneStartFadeAlpha: 1
   sceneStartFadeSpeed: 0.1
   sceneStartFadeExponent: 4
-  sceneEndTransitionMethod: 1
-  sceneEndFadeAlpha: 0
-  sceneEndFadeSpeed: 1
+  sceneEndTransitionMethod: 2
+  sceneEndFadeColor: {r: 0, g: 0, b: 0, a: 0}
+  sceneEndFadeAlpha: 1
+  sceneEndFadeSpeed: 0.1
   sceneEndFadeExponent: 4
 --- !u!1 &101948710
 GameObject:

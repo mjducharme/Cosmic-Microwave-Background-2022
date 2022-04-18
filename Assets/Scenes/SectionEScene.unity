@@ -10903,6 +10903,7 @@ GameObject:
   - component: {fileID: 279934660}
   - component: {fileID: 279934659}
   - component: {fileID: 279934658}
+  - component: {fileID: 279934661}
   m_Layer: 0
   m_Name: Shockwave
   m_TagString: Untagged
@@ -11000,6 +11001,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &279934661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279934657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87821f6185fbdc943aa31b2c20e4e320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneStartTransitionMethod: 0
+  sceneStartFadeColor: {r: 0, g: 0, b: 0, a: 1}
+  sceneStartFadeAlpha: 1
+  sceneStartFadeSpeed: 1
+  sceneStartFadeExponent: 4
+  sceneEndTransitionMethod: 0
+  sceneEndFadeColor: {r: 0, g: 0, b: 0, a: 1}
+  sceneEndFadeAlpha: 0
+  sceneEndFadeSpeed: 1
+  sceneEndFadeExponent: 4
 --- !u!1001 &300715998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23528,6 +23551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   osc: {fileID: 0}
   transitionAddress: /Transition
+  fadeAlphaAddress: /FadeAlpha
 --- !u!1001 &1275443619
 PrefabInstance:
   m_ObjectHideFlags: 0

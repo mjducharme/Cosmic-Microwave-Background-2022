@@ -23,6 +23,10 @@ public class FadeInOut : MonoBehaviour
         osc.SetAddressHandler( alphaMultiplierAddress, AlphaMultiplier );
     }
 
+    void OnDestroy() {
+        osc.RemoveAddressHandler( alphaMultiplierAddress );
+    }
+
     public void DirectAlpha(float fadeAlpha = 1.0f, float fadeSpeed = 1.0f, float exp = 2.0f, bool markSceneReadyToUnloadWhenDone = false) {
         StartCoroutine(FadeChange(fadeAlpha, fadeSpeed, exp, markSceneReadyToUnloadWhenDone)); 
     }

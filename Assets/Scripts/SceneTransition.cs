@@ -8,51 +8,34 @@ public class SceneTransition : MonoBehaviour
 
     public OSC osc;
 
-    public string transitionAddress = "/Transition";
+    public string bigBangAddress = "/BigBang";
 
     public string fadeAlphaAddress = "/FadeAlpha";
     private bool transitionInProgress = false;
     public void Update()
     {
-        if (!transitionInProgress) {
-            if(Input.GetKeyDown(KeyCode.W))
-            {
-                FadeWhite();
-            }
 
-            if(Input.GetKeyDown(KeyCode.B))
-            {
-                FadeBlack();
-            }
-        }
     }
 
-    void TransitionOSC(OscMessage message) {
+    void BigBangOSC(OscMessage message) {
         if (!transitionInProgress) {
-            switch (message.GetInt(0))
-                {
-                    case 0:
-                        FadeWhite();
-                        break;
-
-                    case 1:
-                        FadeBlack();
-                        break;
-                }
+            Debug.Log("Fading");
+            FadeToColor(1, Color.white, 0, 0.1f, 4);
         }
     }
 
     void FadeAlphaOSC(OscMessage message) {
         if (!transitionInProgress) {
-            StartCoroutine(FadeToAlpha(message.GetFloat(0), message.GetFloat(1), message.GetFloat(2)));
+            StartCoroutine(FadeToAlpha(0, message.GetFloat(0), message.GetFloat(1), message.GetFloat(2)));
         }
     }
     void Start()
     {
-        osc.SetAddressHandler( transitionAddress, TransitionOSC);
-         osc.SetAddressHandler( fadeAlphaAddress, FadeAlphaOSC);
+        osc.SetAddressHandler( bigBangAddress, BigBangOSC);
+        osc.SetAddressHandler( fadeAlphaAddress, FadeAlphaOSC);
     }
 
+    /*
     public void FadeWhite () {
         transitionInProgress = true;
         Color whiteColor = Color.white;
@@ -67,16 +50,16 @@ public class SceneTransition : MonoBehaviour
         blackColor.a = 0;
         GetComponent<Image>().color = blackColor;
         StartCoroutine(FadeOutIn());  
-    }
+    } */
 
-    public void FadeToColor(Color fadeColor, float fadeAlpha = 1.0f, float fadeSpeed = 1.0f, float exp = 2.0f, bool markSceneReadyToUnloadWhenDone = false) {
+    public void FadeToColor(int sceneNum, Color fadeColor, float fadeAlpha = 1.0f, float fadeSpeed = 1.0f, float exp = 2.0f, bool markSceneReadyToUnloadWhenDone = false) {
         transitionInProgress = true;
         GetComponent<Image>().color = fadeColor;
-        StartCoroutine(FadeToAlpha(fadeAlpha, fadeSpeed, exp, markSceneReadyToUnloadWhenDone));
+        StartCoroutine(FadeToAlpha(sceneNum, fadeAlpha, fadeSpeed, exp, markSceneReadyToUnloadWhenDone));
 
     }
 
-    public IEnumerator FadeToAlpha(float fadeAlpha = 1.0f, float fadeSpeed = 1.0f, float exp = 2.0f, bool markSceneReadyToUnloadWhenDone = false) {
+    public IEnumerator FadeToAlpha(int sceneNum, float fadeAlpha = 1.0f, float fadeSpeed = 1.0f, float exp = 2.0f, bool markSceneReadyToUnloadWhenDone = false) {
         Color objectColor = GetComponent<Image>().color;
         float fadeAmount = GetComponent<Image>().color.a;
 
@@ -112,33 +95,8 @@ public class SceneTransition : MonoBehaviour
             }
         }
         if (markSceneReadyToUnloadWhenDone) {
-            EventsManager.instance.OnSceneReadyToUnload(gameObject.scene.buildIndex);
+            EventsManager.instance.OnSceneReadyToUnload(sceneNum);
         }
-    }
-
-    public IEnumerator FadeOutIn(int fadeSpeed = 1)
-    {
-        Color objectColor = GetComponent<Image>().color;
-        float fadeAmount;
-
-        while (GetComponent<Image>().color.a < 1)
-        {
-            fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
-
-            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-            GetComponent<Image>().color = objectColor;
-            yield return null;
-        }
-
-        while (GetComponent<Image>().color.a > 0)
-        {
-            fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
-
-            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-            GetComponent<Image>().color = objectColor;
-            yield return null;
-        }
-
         transitionInProgress = false;
     }
 }

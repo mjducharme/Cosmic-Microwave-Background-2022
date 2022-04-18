@@ -30,6 +30,8 @@ public class SceneLoader : MonoBehaviour
 
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
 
+    public SceneLoadTransition.transitionType currentSceneEndTransitionMethod = SceneLoadTransition.transitionType.None;
+
 
     // called first
     void OnEnable()
@@ -78,13 +80,20 @@ public class SceneLoader : MonoBehaviour
     }*/
 
 
-    IEnumerator UnloadSceneWhenReady(int id) {
+    IEnumerator UnloadSceneWhenReady(int id, int sceneNum, bool isCrossfade) {
         while (!sceneReadyToUnload.Contains(id)) {
             Debug.Log("scene is not ready to unload, scene id " + id);
             yield return null;
         }
         scenesToLoad.Remove(SceneManager.UnloadSceneAsync(id));
         sceneReadyToUnload.Remove(id);
+        if (!isCrossfade && sceneNum != 0)
+            scenesToLoad.Add(SceneManager.LoadSceneAsync(sceneNum, LoadSceneMode.Additive));
+        if (sceneNum != 3) {
+            nebula.SetActive(false);
+            pointLight.SetActive(false);
+            mainCamera.GetComponent<connectSuntoNebulaCloudsHDRP>().enabled=false;
+        } 
     }
 
     void SceneReadyToUnload (int sceneNum) {
@@ -101,7 +110,9 @@ public class SceneLoader : MonoBehaviour
                 HideMenu();
             }
             if (sceneNum != 0) {
-                scenesToLoad.Add(SceneManager.LoadSceneAsync(sceneNum, LoadSceneMode.Additive));
+                // if we need to crossfade, we need to load the new scene early, before the old scene is unloaded
+                if ((currentSceneEndTransitionMethod == SceneLoadTransition.transitionType.Crossfade) || (currentScene == 0))
+                    scenesToLoad.Add(SceneManager.LoadSceneAsync(sceneNum, LoadSceneMode.Additive));
                 sceneTransitionImage.SetActive(true);
             } else {
                 menuGameObject.SetActive(true);
@@ -116,7 +127,12 @@ public class SceneLoader : MonoBehaviour
                     _scene1Fade.FadeChange(0, 0.1f, 4);
                 }*/
 
-                StartCoroutine(UnloadSceneWhenReady(currentScene));
+                bool isCrossfade = false;
+
+                if (currentSceneEndTransitionMethod == SceneLoadTransition.transitionType.Crossfade)
+                    isCrossfade = true;
+
+                StartCoroutine(UnloadSceneWhenReady(currentScene, sceneNum, isCrossfade));
                 //Debug.Log("After scene is ready to be unloaded, scene " + currentScene);
 
                 
@@ -126,11 +142,8 @@ public class SceneLoader : MonoBehaviour
                 nebula.SetActive(true);
                 pointLight.SetActive(true);
                 mainCamera.GetComponent<connectSuntoNebulaCloudsHDRP>().enabled=true;
-            } else {
-                nebula.SetActive(false);
-                pointLight.SetActive(false);
-                mainCamera.GetComponent<connectSuntoNebulaCloudsHDRP>().enabled=false;
             }
+
             currentScene = sceneNum;
         }
     }

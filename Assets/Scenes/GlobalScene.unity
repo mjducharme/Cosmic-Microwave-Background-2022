@@ -1138,7 +1138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   osc: {fileID: 53182552}
-  transitionAddress: /Transition
+  bigBangAddress: /BigBang
+  fadeAlphaAddress: /FadeAlpha
 --- !u!114 &994246248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,8 +2146,8 @@ MonoBehaviour:
   _SampleCount0: 2
   _SampleCount1: 55
   _SampleCountL: 6
-  _NoiseTex1: {fileID: 11728776, guid: 4676a0d39df38b84cad914e1e3eadeda, type: 2}
-  _NoiseTex2: {fileID: 11760204, guid: b6d6f79c2d3ef3241a9948dd089967d1, type: 2}
+  _NoiseTex1: {fileID: 0}
+  _NoiseTex2: {fileID: 0}
   _NoiseFreq1: 4.1
   _NoiseFreq2: 31.28
   _NoiseAmp1: 0.81
@@ -3387,7 +3388,7 @@ MonoBehaviour:
   changeSceneAddress: /ChangeScene
   currentScene: 0
   selectedScene: 1
-  oldSceneReadyToUnload: 1
+  currentSceneEndTransitionMethod: 0
 --- !u!1 &2071107754
 GameObject:
   m_ObjectHideFlags: 0

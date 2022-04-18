@@ -202,7 +202,7 @@ VisualEffect:
       - m_Value: 0.5
         m_Name: Height
         m_Overridden: 0
-      - m_Value: 1
+      - m_Value: 0
         m_Name: AlphaMultiplier
         m_Overridden: 1
     m_Vector2f:
@@ -369,6 +369,8 @@ GameObject:
   - component: {fileID: 1718796525459357637}
   - component: {fileID: 1718796525459357636}
   - component: {fileID: 1718796525459357639}
+  - component: {fileID: 1718796525459357640}
+  - component: {fileID: 1718796525459357641}
   m_Layer: 0
   m_Name: Section 3 A material visual effect
   m_TagString: Untagged
@@ -431,7 +433,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 0
+        m_Name: AlphaMultiplier
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -512,3 +517,40 @@ MonoBehaviour:
   osc: {fileID: 0}
   visAlphaMultiplier: AlphaMultiplier
   alphaMultiplierAddress: /FadeInOut/Section3A
+--- !u!114 &1718796525459357640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718796525459357635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87821f6185fbdc943aa31b2c20e4e320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneStartTransitionMethod: 2
+  sceneStartFadeColor: {r: 0, g: 0, b: 0, a: 1}
+  sceneStartFadeAlpha: 0
+  sceneStartFadeSpeed: 0.2
+  sceneStartFadeExponent: 0.08
+  sceneEndTransitionMethod: 2
+  sceneEndFadeColor: {r: 1, g: 1, b: 1, a: 0}
+  sceneEndFadeAlpha: 1
+  sceneEndFadeSpeed: 0.1
+  sceneEndFadeExponent: 4
+--- !u!114 &1718796525459357641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718796525459357635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21b0bb059659924589ce8ff954d2739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delaySeconds: 2
+  fadeSpeed: 0.1
+  fadeExponent: 4

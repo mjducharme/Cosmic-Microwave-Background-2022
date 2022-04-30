@@ -6,6 +6,7 @@ public class RotateMaterialColors : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public string colorVar = "_BaseColor";
     public Color color1;
     public Color color2;
     public Color color3;
@@ -33,7 +34,7 @@ public class RotateMaterialColors : MonoBehaviour
                 calcMid(color2.g, color3.g, percent),
                 calcMid(color2.b, color3.b, percent),
                 calcMid(color2.a, color3.a, percent));
-            mat.SetColor("_BaseColor", mix);
+            mat.SetColor(colorVar, mix);
         }
         else
         {
@@ -42,7 +43,7 @@ public class RotateMaterialColors : MonoBehaviour
                 calcMid(color1.g, color2.g, percent),
                 calcMid(color1.b, color2.b, percent),
                 calcMid(color1.a, color2.a, percent));
-            mat.SetColor("_BaseColor", mix);
+            mat.SetColor(colorVar, mix);
         }
      
         counter += increment;

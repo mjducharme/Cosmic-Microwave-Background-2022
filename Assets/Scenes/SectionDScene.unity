@@ -1093,7 +1093,7 @@ VisualEffect:
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 6409833abfcba594aaed3b6d5d21c659, type: 3}
   m_InitialEventName: OnCmbTrigger
-  m_InitialEventNameOverriden: 1
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_ResourceVersion: 1

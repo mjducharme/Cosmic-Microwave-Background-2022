@@ -254,7 +254,7 @@ VisualEffect:
       - m_Value: 1
         m_Name: TurbulenceIntensity
         m_Overridden: 1
-      - m_Value: 0.01
+      - m_Value: 0.06
         m_Name: ColorChangePeriod
         m_Overridden: 1
       - m_Value: 1
@@ -342,7 +342,10 @@ VisualEffect:
         m_Name: Gradient
         m_Overridden: 1
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: -2417523614627309858, guid: c9103f2e45105bc4fb4385d6efca312b, type: 3}
+        m_Name: GradientTexture
+        m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!4 &41241645
@@ -403,7 +406,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41241642}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 038e10cd90232454782a1873b24b02dd, type: 3}
   m_Name: 
@@ -516,6 +519,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6969836da23f43d45a1ddda1416c0a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0, g: 0.2901961, b: 1, a: 1}
+    key1: {r: 0, g: 0.2901961, b: 1, a: 1}
+    key2: {r: 0, g: 0.2901961, b: 1, a: 0}
+    key3: {r: 0.21483018, g: 0.20728548, b: 1, a: 0}
+    key4: {r: 0.45830983, g: 0.113318026, b: 1, a: 0}
+    key5: {r: 0.7519288, g: 0, b: 1, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 11758
+    ctime2: 25058
+    ctime3: 36623
+    ctime4: 49730
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  visGradient: Gradient
+  visTexture: GradientTexture
+  type: 0
 --- !u!1 &101948710
 GameObject:
   m_ObjectHideFlags: 0

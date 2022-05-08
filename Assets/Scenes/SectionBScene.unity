@@ -343,7 +343,7 @@ VisualEffect:
         m_Overridden: 1
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: -2417523614627309858, guid: c9103f2e45105bc4fb4385d6efca312b, type: 3}
+      - m_Value: {fileID: -2417523614627309858, guid: 8d9ccfd17a1bf8f4e847e36a5dd338f4, type: 3}
         m_Name: GradientTexture
         m_Overridden: 1
     m_Bool:

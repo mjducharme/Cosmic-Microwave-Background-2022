@@ -87,7 +87,7 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -207,6 +207,32 @@
         "com.unity.render-pipelines.core": "10.8.1"
       },
       "url": "https://packages.unity.com"
+    },
+    "jp.keijiro.klak.timeline.procedural-motion": {
+      "version": "file:D:/jp.keijiro.klak.timeline.procedural-motion@1.0.1",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.timeline": "1.4.2",
+        "com.unity.mathematics": "1.2.1"
+      }
+    },
+    "jp.keijiro.metamesh": {
+      "version": "1.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1"
+      },
+      "url": "https://registry.npmjs.com"
+    },
+    "jp.keijiro.noiseshader": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.com"
     },
     "jp.keijiro.pugrad": {
       "version": "1.0.0",

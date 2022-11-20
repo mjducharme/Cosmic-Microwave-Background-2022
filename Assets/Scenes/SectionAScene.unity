@@ -198,6 +198,8 @@ GameObject:
   - component: {fileID: 1170258645}
   - component: {fileID: 1170258646}
   - component: {fileID: 1170258647}
+  - component: {fileID: 1170258649}
+  - component: {fileID: 1170258648}
   m_Layer: 0
   m_Name: FluvioFX Fluid
   m_TagString: Untagged
@@ -270,7 +272,7 @@ VisualEffect:
       m_Array:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: fluvioPosition
-        m_Overridden: 0
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -353,6 +355,178 @@ MonoBehaviour:
   positionAddress: /Position
   currentPosition: {x: 0, y: 0, z: 0}
   speed: 3
+  gradientNum: 0
+  fadeTime: 1
+  GradientsQuiet:
+  - serializedVersion: 2
+    key0: {r: 0, g: 0.2901961, b: 1, a: 0.64705884}
+    key1: {r: 0, g: 0.2901961, b: 1, a: 0.64705884}
+    key2: {r: 0, g: 0.2901961, b: 1, a: 0}
+    key3: {r: 0.21483018, g: 0.20728548, b: 1, a: 0}
+    key4: {r: 0.11372548, g: 0.13885759, b: 1, a: 0}
+    key5: {r: 0.05724907, g: 0, b: 1, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 11758
+    ctime2: 25058
+    ctime3: 36623
+    ctime4: 49730
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  - serializedVersion: 2
+    key0: {r: 0, g: 1, b: 0.02707243, a: 0.64705884}
+    key1: {r: 0, g: 1, b: 0.35719442, a: 0.64705884}
+    key2: {r: 0, g: 1, b: 0.33085203, a: 0}
+    key3: {r: 0.20784312, g: 1, b: 0.68824726, a: 0}
+    key4: {r: 0.11372548, g: 1, b: 0.6932893, a: 0}
+    key5: {r: 0, g: 0.86376, b: 1, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 11758
+    ctime2: 25058
+    ctime3: 36623
+    ctime4: 49730
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  - serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 0.64705884}
+    key1: {r: 1, g: 0.02615793, b: 0, a: 0.64705884}
+    key2: {r: 1, g: 0.021578027, b: 0, a: 0}
+    key3: {r: 1, g: 0.23918027, b: 0.20784312, a: 0}
+    key4: {r: 1, g: 0.11372548, b: 0.13222264, a: 0}
+    key5: {r: 1, g: 0.0916364, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 11758
+    ctime2: 25058
+    ctime3: 36623
+    ctime4: 50308
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  GradientsLoud:
+  - serializedVersion: 2
+    key0: {r: 0, g: 0.2901961, b: 1, a: 0.64705884}
+    key1: {r: 0, g: 0.2901961, b: 1, a: 0.64705884}
+    key2: {r: 0, g: 0.2901961, b: 1, a: 0}
+    key3: {r: 1, g: 0.6570702, b: 0.20784312, a: 0}
+    key4: {r: 1, g: 0.59700614, b: 0.11372548, a: 0}
+    key5: {r: 1, g: 0.8272578, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 11758
+    ctime2: 25058
+    ctime3: 36623
+    ctime4: 49730
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  - serializedVersion: 2
+    key0: {r: 0, g: 1, b: 0.7300215, a: 0.64705884}
+    key1: {r: 0, g: 1, b: 0.6845894, a: 0.64705884}
+    key2: {r: 0, g: 1, b: 0.7300215, a: 0}
+    key3: {r: 1, g: 0.20784312, b: 0.7412275, a: 0}
+    key4: {r: 1, g: 0.11372548, b: 0.6343311, a: 0}
+    key5: {r: 1, g: 0, b: 0.9880781, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 11758
+    ctime2: 25058
+    ctime3: 36623
+    ctime4: 49730
+    ctime5: 65342
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  - serializedVersion: 2
+    key0: {r: 1, g: 0.038367633, b: 0, a: 0.64705884}
+    key1: {r: 1, g: 0.019000754, b: 0, a: 0.64705884}
+    key2: {r: 1, g: 0.059916537, b: 0, a: 0}
+    key3: {r: 0.990566, g: 0.34828234, b: 0, a: 0}
+    key4: {r: 1, g: 0.26967317, b: 0, a: 0}
+    key5: {r: 1, g: 0.2605207, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 11758
+    ctime2: 25058
+    ctime3: 36623
+    ctime4: 49730
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
   gradient1:
     serializedVersion: 2
     key0: {r: 0, g: 0.2901961, b: 1, a: 0.64705884}
@@ -387,9 +561,9 @@ MonoBehaviour:
     key0: {r: 0, g: 0.2901961, b: 1, a: 0.64705884}
     key1: {r: 0, g: 0.2901961, b: 1, a: 0.64705884}
     key2: {r: 0, g: 0.2901961, b: 1, a: 0.7798082}
-    key3: {r: 1, g: 0.20784312, b: 0.64003366, a: 0.7798082}
-    key4: {r: 1, g: 0.23885465, b: 0.11372548, a: 0}
-    key5: {r: 1, g: 0.8272578, b: 0, a: 0}
+    key3: {r: 1, g: 0.8612197, b: 0.20784312, a: 0.7798082}
+    key4: {r: 1, g: 0.786648, b: 0.11372548, a: 0}
+    key5: {r: 1, g: 0.9581069, b: 0.11372548, a: 0}
     key6: {r: 1, g: 0.9839374, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
@@ -477,6 +651,67 @@ MonoBehaviour:
   sceneEndFadeAlpha: 0
   sceneEndFadeSpeed: 0.1
   sceneEndFadeExponent: 4
+--- !u!114 &1170258648
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170258641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: fluvioPosition
+  Target: {fileID: 1249953454}
+--- !u!114 &1170258649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170258641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 1170258648}
+  m_VisualEffect: {fileID: 1170258643}
+--- !u!1 &1249953453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249953454}
+  m_Layer: 0
+  m_Name: Fluvio Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1249953454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249953453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1945077036
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,3 +836,70 @@ MonoBehaviour:
   triggerName: OnBigBang
   osc: {fileID: 0}
   oscAddress: /BigBang
+--- !u!1 &2101087459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2101087462}
+  - component: {fileID: 2101087461}
+  - component: {fileID: 2101087460}
+  m_Layer: 0
+  m_Name: Timeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2101087460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101087459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c497508d783cbfa498fe9a0fa9a2b83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSpeed: 1
+  pd: {fileID: 2101087461}
+  osc: {fileID: 0}
+  oscAddress: /TimelineASpeed
+--- !u!320 &2101087461
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101087459}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 89cd2c6e9fc0911408697e73a9578857, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 6461638146955788930, guid: 89cd2c6e9fc0911408697e73a9578857, type: 2}
+    value: {fileID: 1249953454}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &2101087462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101087459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

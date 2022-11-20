@@ -7,12 +7,16 @@ public class RotateMaterialColors : MonoBehaviour
     // Start is called before the first frame update
 
     public string colorVar = "_BaseColor";
+     [ColorUsage(true, true)]
     public Color color1;
+     [ColorUsage(true, true)]
     public Color color2;
+     [ColorUsage(true, true)]
     public Color color3;
+     [ColorUsage(true, true)]
     public Color mix;
     private int counter = 0;
-    private int maxCounter = 5000;
+    private int maxCounter = 1000;
     private int increment = 1;
     private Material mat;
 

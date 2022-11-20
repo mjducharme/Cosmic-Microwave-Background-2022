@@ -200,7 +200,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -486
     y: -912
-    width: 2922
+    width: 2580
     height: 5431
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -774,7 +774,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1000
+      m_SerializableObject: 10000
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -3597,7 +3597,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":10.0,"y":10.0,"z":0.20000000298023225}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":19.0,"y":12.0,"z":0.20000000298023225}}'
     m_Space: 1
   m_Property:
     name: Box
@@ -4605,7 +4605,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":13.300000190734864,"y":13.300000190734864,"z":1.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":20.0,"y":13.300000190734864,"z":1.0}}'
     m_Space: 1
   m_Property:
     name: box

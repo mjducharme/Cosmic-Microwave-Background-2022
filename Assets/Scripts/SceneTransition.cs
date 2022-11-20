@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class SceneTransition : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class SceneTransition : MonoBehaviour
     public string bigBangAddress = "/BigBang";
 
     public string fadeAlphaAddress = "/FadeAlpha";
+
+    public string constellationsAddress = "/ToConstellations";
+
     private bool transitionInProgress = false;
     public void Update()
     {
@@ -29,10 +33,18 @@ public class SceneTransition : MonoBehaviour
             StartCoroutine(FadeToAlpha(0, message.GetFloat(0), message.GetFloat(1), message.GetFloat(2)));
         }
     }
+
+    void ConstellationsOSC(OscMessage message) {
+        if (!transitionInProgress) {
+            StartCoroutine(Constellations());
+        }
+    }
+
     void Start()
     {
         osc.SetAddressHandler( bigBangAddress, BigBangOSC);
         osc.SetAddressHandler( fadeAlphaAddress, FadeAlphaOSC);
+        osc.SetAddressHandler( constellationsAddress, ConstellationsOSC);
     }
 
     /*
@@ -99,4 +111,18 @@ public class SceneTransition : MonoBehaviour
         }
         transitionInProgress = false;
     }
+
+    IEnumerator Constellations() {
+        if (!transitionInProgress) {
+            yield return StartCoroutine(FadeToAlpha(0, 1.0f, 1.0f, 1.0f));
+        }
+        GameObject.Find("VOLUME").SetActive(false);
+        GameObject.Find("ElectricOrb").GetComponent<VisualEffect>().SetFloat("AlphaMultiplier", 0.0f);
+        GameObject.Find("Section 3 A material visual effect").GetComponent<VisualEffect>().SetFloat("AlphaMultiplier", 0.0f);
+        GameObject.Find("Constellations").GetComponent<VisualEffect>().enabled = true;
+        StartCoroutine(FadeToAlpha(0, 0.0f, 1.0f, 1.0f));
+
+        yield return null;
+    }
+
 }

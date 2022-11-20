@@ -41,7 +41,7 @@ public class GradientTexture : MonoBehaviour {
         int height = 1;
  
         Texture2D texture = new Texture2D(width, height);
-        texture.alphaIsTransparency = true;
+        //texture.alphaIsTransparency = true;
  
         Color color;
 

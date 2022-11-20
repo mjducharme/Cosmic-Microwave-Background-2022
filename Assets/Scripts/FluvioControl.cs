@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.VFX;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class FluvioControl : MonoBehaviour {
@@ -25,6 +26,16 @@ public class FluvioControl : MonoBehaviour {
     public Vector3 currentPosition;
 
     public float speed = 3;
+
+    public int gradientNum = 0;
+
+    private int _curGradientNum = 0;
+
+    public float fadeTime = 1.0f;
+
+    [GradientUsage(true)] public List<Gradient> GradientsQuiet = new List<Gradient>();
+
+    [GradientUsage(true)] public List<Gradient> GradientsLoud = new List<Gradient>();
 
     public Gradient gradient1;
     
@@ -68,7 +79,19 @@ public class FluvioControl : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetKeyDown(KeyCode.L)) {
+            gradientNum = (gradientNum + 1) % GradientsQuiet.Count;
+        }
+        if (Input.GetKeyDown(KeyCode.K)) {
+            if (gradientNum == 0) {
+                gradientNum = GradientsQuiet.Count - 1;
+            } else {
+                gradientNum = (gradientNum - 1) % GradientsQuiet.Count;
+            }
+        }
+        if (gradientNum != _curGradientNum) {
+            StartCoroutine(colorLerp(_curGradientNum, gradientNum));
+        }
 	}
 
     void SpherePosition (OscMessage message) {
@@ -100,6 +123,16 @@ public class FluvioControl : MonoBehaviour {
         currentGradient = gc.SetGradient(gradient1, gradient2, x*10);
         _testVfx.SetGradient(_visGradientId, currentGradient);
 	}
+
+    IEnumerator colorLerp(int currentColor, int newColor) {
+        for (float t=0.0f; t<fadeTime; t+=Time.deltaTime) {
+            gradient1 = Util.Gradient.Lerp(GradientsQuiet[currentColor], GradientsQuiet[newColor], t/fadeTime);
+            gradient2 = Util.Gradient.Lerp(GradientsLoud[currentColor], GradientsLoud[newColor], t/fadeTime);
+            yield return null;
+        }
+        _curGradientNum = newColor;
+        yield return null;
+    }
 
 
 }

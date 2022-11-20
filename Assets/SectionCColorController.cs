@@ -15,6 +15,8 @@ public class SectionCColorController : MonoBehaviour
     public VisualEffect VisualEffect2;
     public VisualEffect VisualEffect3;
 
+    public float fadeTime = 1.0f;
+
     private VisualEffect _vfx1;
     private VisualEffect _vfx2;
     private VisualEffect _vfx3;
@@ -89,13 +91,28 @@ public class SectionCColorController : MonoBehaviour
     void ChangeColorTo(int newColor) {
         Debug.Log("Changing color");
         if (newColor != _currentColor) {
-            _vfx1.SetGradient(_vfx1Gradient, Vfx1Gradients[newColor]);
-            _vfx2.SetVector4(_vfx2Color, BallColors[newColor]);
-            _vfx2.SetGradient(_vfx2ElectGradient, ElectGradients[newColor]);
-            _nebulaClouds.cloudTopColor = CloudTopColors[newColor];
-            _nebulaClouds.highSunColor = HighSunColors[newColor];
-            _pointLight.color = PointLightColors[newColor];
-            _currentColor = newColor;
+            StartCoroutine(colorLerp(_currentColor, newColor));
+            //_vfx1.SetGradient(_vfx1Gradient, Vfx1Gradients[newColor]);
+            //_vfx2.SetVector4(_vfx2Color, BallColors[newColor]);
+            //_vfx2.SetGradient(_vfx2ElectGradient, ElectGradients[newColor]);
+            //_nebulaClouds.cloudTopColor = CloudTopColors[newColor];
+            //_nebulaClouds.highSunColor = HighSunColors[newColor];
+            //_pointLight.color = PointLightColors[newColor];
+            //_currentColor = newColor;
         }
+    }
+
+    IEnumerator colorLerp(int currentColor, int newColor) {
+        for (float t=0.0f; t<fadeTime; t+=Time.deltaTime) {
+            _vfx1.SetGradient(_vfx1Gradient, Util.Gradient.Lerp(Vfx1Gradients[currentColor], Vfx1Gradients[newColor], t/fadeTime));
+            _vfx2.SetGradient(_vfx2ElectGradient, Util.Gradient.Lerp(ElectGradients[currentColor], ElectGradients[newColor], t/fadeTime));
+            _vfx2.SetVector4(_vfx2Color, Color.Lerp(BallColors[currentColor], BallColors[newColor], t/fadeTime));
+            _nebulaClouds.cloudTopColor = Color.Lerp(CloudTopColors[currentColor], CloudTopColors[newColor], t/fadeTime);
+            _nebulaClouds.highSunColor = Color.Lerp(HighSunColors[currentColor], HighSunColors[newColor], t/fadeTime);
+            _pointLight.color = Color.Lerp(PointLightColors[currentColor], PointLightColors[newColor], t/fadeTime);
+            yield return null;
+        }
+        _currentColor = newColor;
+        yield return null;
     }
 }

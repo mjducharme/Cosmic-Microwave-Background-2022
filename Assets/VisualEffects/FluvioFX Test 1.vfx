@@ -822,7 +822,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 10000
+      m_SerializableObject: 5000
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -12867,8 +12867,6 @@ MonoBehaviour:
   m_Nodes:
   - m_Id: 0
     linkedSlots:
-    - outputSlot: {fileID: 8926484042661619387}
-      inputSlot: {fileID: 8926484042661619310}
     - outputSlot: {fileID: 8926484042661619387}
       inputSlot: {fileID: 8926484042661619526}
     position: {x: -194.50002, y: 1295.5001}

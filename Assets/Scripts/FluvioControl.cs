@@ -17,13 +17,16 @@ public class FluvioControl : MonoBehaviour {
     //public string visPartial2 = "partial2Amp";
     //public string visPartial3 = "partial3Amp";
     //public string visPartial4 = "partial4Amp";
-
+    public string nextGradientAddress = "/NextGradient";
+    public string prevGradientAddress = "/PrevGradient";
     public string visGradient = "fluvioGradient";
 
     public string visPosition = "fluvioPosition";
     public string positionAddress = "/Position";
 
     public Vector3 currentPosition;
+
+    public float moveTime = 3.0f;
 
     public float speed = 3;
 
@@ -71,6 +74,8 @@ public class FluvioControl : MonoBehaviour {
         osc = GameObject.Find("OSC").GetComponent<OSC>();
         osc.SetAddressHandler( amplitudeAddress , Amplitude );
         osc.SetAddressHandler( positionAddress, SpherePosition);
+        osc.SetAddressHandler( nextGradientAddress, oscNextGradient);
+        osc.SetAddressHandler( prevGradientAddress, oscPrevGradient);
     }
 	
     void OnDestroy() {
@@ -80,14 +85,16 @@ public class FluvioControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.L)) {
-            gradientNum = (gradientNum + 1) % GradientsQuiet.Count;
+            nextGradient();
         }
         if (Input.GetKeyDown(KeyCode.K)) {
-            if (gradientNum == 0) {
-                gradientNum = GradientsQuiet.Count - 1;
-            } else {
-                gradientNum = (gradientNum - 1) % GradientsQuiet.Count;
-            }
+            prevGradient();
+        }
+        if (Input.GetKeyDown(KeyCode.J)) {
+            StartCoroutine(MoveToSpot(currentPosition, new Vector3(0,0,0)));
+        }
+        if (Input.GetKeyDown(KeyCode.H)) {
+            StartCoroutine(MoveToSpot(currentPosition, new Vector3(0,0,10)));
         }
         if (gradientNum != _curGradientNum) {
             StartCoroutine(colorLerp(_curGradientNum, gradientNum));
@@ -97,10 +104,32 @@ public class FluvioControl : MonoBehaviour {
     void SpherePosition (OscMessage message) {
         float x = message.GetFloat(0);
         float y = message.GetFloat(1);
-        Vector3 v = new Vector3(x,y,0);
-        Vector3 pos = Vector3.Lerp(currentPosition, v, 1.0f - Mathf.Exp(-speed * Time.deltaTime));
+        float z = message.GetFloat(2);
+        Vector3 v = new Vector3(x,y,z);
+        StartCoroutine(MoveToSpot(currentPosition, v));
+        /*Vector3 pos = Vector3.Lerp(currentPosition, v, 1.0f - Mathf.Exp(-speed * Time.deltaTime));
         currentPosition = pos;
-        _testVfx.SetVector3(_visPositionId, pos);
+        _testVfx.SetVector3(_visPositionId, pos);*/
+    }
+
+    void oscNextGradient (OscMessage message) {
+        nextGradient();
+    }
+
+    void oscPrevGradient (OscMessage message) {
+        prevGradient();
+    }
+
+    void nextGradient() {
+        gradientNum = (gradientNum + 1) % GradientsQuiet.Count;
+    }
+
+    void prevGradient () {
+        if (gradientNum == 0) {
+            gradientNum = GradientsQuiet.Count - 1;
+        } else {
+            gradientNum = (gradientNum - 1) % GradientsQuiet.Count;
+        }
     }
 
 /*
@@ -133,6 +162,25 @@ public class FluvioControl : MonoBehaviour {
         _curGradientNum = newColor;
         yield return null;
     }
+
+    IEnumerator MoveToSpot(Vector3 curPosition, Vector3 newPosition) {
+        float elapsedTime = 0;
+ 
+        while (elapsedTime < moveTime)
+        {
+            Vector3 pos = Vector3.Lerp(curPosition, newPosition, (elapsedTime / moveTime));
+            currentPosition = pos;
+            _testVfx.SetVector3(_visPositionId, pos);
+            elapsedTime += Time.deltaTime;
+        
+            // Yield here
+            yield return null;
+        }  
+        // Make sure we got there
+        currentPosition = newPosition;
+        _testVfx.SetVector3(_visPositionId, newPosition);
+        yield return null;
+     }
 
 
 }

@@ -310,7 +310,7 @@ VisualEffect:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: fluvioPosition2
         m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: 10}
+      - m_Value: {x: 0, y: 0, z: 1.5}
         m_Name: fluvioPosition2Adjust
         m_Overridden: 1
     m_Vector4f:

@@ -193,6 +193,13 @@ public class SceneLoader : MonoBehaviour
                 LoadScene(5);
             } else if (Input.GetKeyDown(KeyCode.Q)) {
                 LoadScene(0);
+            } else if (Input.GetKeyDown(KeyCode.P)) {
+                string result = "Scenes ready to unload: ";
+                foreach (var item in sceneReadyToUnload)
+                {
+                    result += item.ToString() + ", ";
+                }
+                Debug.Log(result);
             } 
         }
     }

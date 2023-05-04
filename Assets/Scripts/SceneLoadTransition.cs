@@ -64,6 +64,10 @@ public class SceneLoadTransition : MonoBehaviour
         _sceneLoader.currentSceneEndTransitionMethod = sceneEndTransitionMethod;
     }
 
+    void OnDestroy() {
+        EventsManager.instance.PrepareSceneUnload -= PrepareSceneUnload;
+    }
+
     void PrepareSceneUnload(int id) {
         if (id == _sceneId) {
             Debug.Log("called preparesceneunload for scene " + _sceneId);
@@ -86,6 +90,6 @@ public class SceneLoadTransition : MonoBehaviour
                 EventsManager.instance.OnSceneReadyToUnload(_sceneId);
             }
         }
-        Debug.Log("New Test Message");
+        //Debug.Log("New Test Message");
     }
 }

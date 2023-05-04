@@ -418,12 +418,16 @@ MonoBehaviour:
   visualEffect: {fileID: 0}
   amplitudeAddress: /AmplitudeB
   visAmplitude: Amplitude
+  nextGradientAddress: /NextGradientB
+  prevGradientAddress: /PrevGradientB
   visGradient: Gradient
   visPosition: fluvioPosition
   positionAddress: /PositionB
   currentPosition: {x: 0, y: 0, z: 0}
+  moveTime: 3
   speed: 3
   gradientNum: 0
+  fadeTime: 1
   GradientsQuiet:
   - serializedVersion: 2
     key0: {r: 0.5638943, g: 0, b: 1, a: 1}

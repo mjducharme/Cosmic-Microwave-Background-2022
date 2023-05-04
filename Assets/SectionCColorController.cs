@@ -6,6 +6,10 @@ using UnityEngine.VFX;
 
 public class SectionCColorController : MonoBehaviour
 {
+    public OSC osc;
+
+    public string sectionCIncrementColorAddress = "/SectionC/IncrementColor";
+    
     public connectSuntoNebulaCloudsHDRP _nebulaClouds;
     //public GameObject gamePointLight;
     public Light _pointLight;
@@ -38,6 +42,8 @@ public class SectionCColorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        osc = GameObject.Find("OSC").GetComponent<OSC>();
+        osc.SetAddressHandler( sectionCIncrementColorAddress, IncrementColor );
         _vfx1 = VisualEffect1.GetComponent<VisualEffect>();
         _vfx2 = VisualEffect2.GetComponent<VisualEffect>();
         _vfx1Gradient = Shader.PropertyToID("Gradient");
@@ -52,6 +58,10 @@ public class SectionCColorController : MonoBehaviour
         _nebulaClouds.cloudTopColor = CloudTopColors[setNewColor];
         _nebulaClouds.highSunColor = HighSunColors[setNewColor];
         //_pointLight.Color = PointLightColors[0];
+    }
+
+    void OnDestroy() {
+        osc.RemoveAddressHandler( sectionCIncrementColorAddress );
     }
 
     // Update is called once per frame
@@ -100,6 +110,10 @@ public class SectionCColorController : MonoBehaviour
             //_pointLight.color = PointLightColors[newColor];
             //_currentColor = newColor;
         }
+    }
+
+    void IncrementColor(OscMessage message) {
+        setNewColor++;
     }
 
     IEnumerator colorLerp(int currentColor, int newColor) {

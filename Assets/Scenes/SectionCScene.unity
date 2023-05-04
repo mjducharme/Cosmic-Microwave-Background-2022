@@ -632,7 +632,6 @@ GameObject:
   m_Component:
   - component: {fileID: 883344292}
   - component: {fileID: 883344293}
-  - component: {fileID: 883344294}
   m_Layer: 0
   m_Name: VisualEffects
   m_TagString: Untagged
@@ -674,6 +673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eceb63d82ee268b45b83c5238fe337f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  osc: {fileID: 0}
+  sectionCIncrementColorAddress: /SectionC/IncrementColor
   _nebulaClouds: {fileID: 0}
   _pointLight: {fileID: 0}
   VisualEffect1: {fileID: 1718796525459357637}
@@ -1407,18 +1408,6 @@ MonoBehaviour:
   - {r: 0.25610256, g: 0, b: 1, a: 0}
   - {r: 0, g: 0.07410216, b: 1, a: 0}
   - {r: 0, g: 0.24647617, b: 1, a: 0}
---- !u!114 &883344294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883344291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ef0de72e381d342ba6052f544d4fad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1214067974
 GameObject:
   m_ObjectHideFlags: 0

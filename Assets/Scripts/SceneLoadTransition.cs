@@ -67,16 +67,22 @@ public class SceneLoadTransition : MonoBehaviour
     void PrepareSceneUnload(int id) {
         if (id == _sceneId) {
             Debug.Log("called preparesceneunload for scene " + _sceneId);
-            if (sceneEndTransitionMethod == transitionType.Crossfade) {
-                Debug.Log("About to start scene end crossfade " + _sceneId);
-                FadeInOut _sceneFade = GetComponent<FadeInOut>();
-                _sceneFade.DirectAlpha(sceneEndFadeAlpha, sceneEndFadeSpeed, sceneEndFadeExponent, true);
-            } else if (sceneEndTransitionMethod == transitionType.FadeAlpha) {
-                Debug.Log("About to start scene end fadealpha " + _sceneId);
-                SceneTransition _sceneFadeAlpha = GameObject.Find("SceneTransitionImage").GetComponent<SceneTransition>();
-                _sceneFadeAlpha.FadeToColor(id, sceneEndFadeColor, sceneEndFadeAlpha, sceneEndFadeSpeed, sceneEndFadeExponent, true);
-            } else if (sceneEndTransitionMethod == transitionType.None) {
-                // If there is no unload transition, scene should be ready to unload immediately
+            if (this) {
+                Debug.Log("This is good for preparesceneunload for scene " + _sceneId);
+                if (sceneEndTransitionMethod == transitionType.Crossfade) {
+                    Debug.Log("About to start scene end crossfade " + _sceneId);
+                    FadeInOut _sceneFade = GetComponent<FadeInOut>();
+                    _sceneFade.DirectAlpha(sceneEndFadeAlpha, sceneEndFadeSpeed, sceneEndFadeExponent, true);
+                } else if (sceneEndTransitionMethod == transitionType.FadeAlpha) {
+                    Debug.Log("About to start scene end fadealpha " + _sceneId);
+                    SceneTransition _sceneFadeAlpha = GameObject.Find("SceneTransitionImage").GetComponent<SceneTransition>();
+                    _sceneFadeAlpha.FadeToColor(id, sceneEndFadeColor, sceneEndFadeAlpha, sceneEndFadeSpeed, sceneEndFadeExponent, true);
+                } else if (sceneEndTransitionMethod == transitionType.None) {
+                    // If there is no unload transition, scene should be ready to unload immediately
+                    EventsManager.instance.OnSceneReadyToUnload(_sceneId);
+                }
+            } else {
+                Debug.LogWarning("Forcing Unload - Something went wrong with preparesceneunload for scene " + _sceneId);
                 EventsManager.instance.OnSceneReadyToUnload(_sceneId);
             }
         }
